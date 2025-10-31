@@ -1,0 +1,31 @@
+# Proof-of-Concept Skeleton for Stochastic FRG Gravity
+# Minimal placeholder. Not physical. Structure only.
+
+import numpy as np
+
+# FRG beta function placeholder
+def beta_G(G, Lambda):
+    return -2*G + 0.1*G**2
+
+def beta_L(Lambda, G):
+    return -2*Lambda + 0.05*G
+
+# Simple integrator
+def run_frg(G0, L0, k_steps=1000, dk=-1e-3):
+    G, L = G0, L0
+    for _ in range(k_steps):
+        G += beta_G(G, L)*dk
+        L += beta_L(L, G)*dk
+    return G, L
+
+# SPDE: linearized metric perturbation h with white noise
+nx = 64; dt = 1e-2; steps = 100
+h = np.zeros((nx,))
+
+for t in range(steps):
+    noise = np.sqrt(2.0)*np.random.randn(nx)
+    lap = np.roll(h,1) - 2*h + np.roll(h,-1)
+    h += dt*(lap) + np.sqrt(dt)*noise
+
+print("FRG result:", run_frg(0.1, 0.01))
+print("h sample mean, var:", np.mean(h), np.var(h))
