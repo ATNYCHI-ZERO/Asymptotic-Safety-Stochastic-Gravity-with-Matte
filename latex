@@ -1,0 +1,29 @@
+Stochastic FRG Gravity: Minimal Scaffold
+
+Status: Structural template. No physical claims.
+
+1. Action ansatz
+
+Gravity with curvature-squared terms and matter placeholders.
+
+2. FRG flow
+
+Define couplings, truncations, and symbolic beta-structure.
+
+3. Stochastic sector
+
+Einstein–Langevin form with Gaussian noise placeholder.
+
+4. Tomography
+
+Geodesic X-ray operator under weak-field linearization. Placeholder.
+
+5. Computation plan
+
+List modules mapping to code scaffold.
+
+6. Reproducibility
+
+Seeds, tolerances, mesh sizes, and identity checks (to be filled).
+
+Appendix: Pseudocode hooks
